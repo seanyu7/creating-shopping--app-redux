@@ -14,10 +14,15 @@ const cartSlice = createSlice({
   reducers: {
     //crearcartっていうReducerを作っている。
     clearCart: (state) => {
+      //clearCartという名前のaction creatorを作っている。
       state.cartItems = [];
     },
   },
 });
 
 console.log(cartSlice);
+
+export const { clearCart } = cartSlice.actions;
+//clearCartという名前のaction creatorをexportしている。
+//action creatorをexportすることで、他のファイルから呼び出して、Dispatchすることで、Reducerを実行することができる。
 export default cartSlice.reducer;
