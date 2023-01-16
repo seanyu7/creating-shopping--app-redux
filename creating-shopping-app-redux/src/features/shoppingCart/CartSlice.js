@@ -15,7 +15,9 @@ const cartSlice = createSlice({
     //crearcartっていうReducerを作っている。
     clearCart: (state) => {
       //clearCartという名前のaction creatorを作っている。
-      state.cartItems = [];
+      //state.cartItems = [];
+      return{cartItems: [], amount: 0, total: 0};
+      //上記記述をすることによってState内でのcartItemsの値を空にすることができる。
     },
   },
 });
