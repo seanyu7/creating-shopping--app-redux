@@ -11,9 +11,11 @@ const initialState = {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
+  //initialstateはstateの初期値を設定するもの.
+  //ここで設定した値は、storeの中に保存される。
   reducers: {
     //crearcartっていうReducerを作っている。
-    clearCart: (state) => {
+    clearCart: (state, action) => {
       //clearCartという名前のaction creatorを作っている。
       //state.cartItems = [];
       return { cartItems: [], amount: 0, total: 0 };
@@ -40,6 +42,7 @@ const cartSlice = createSlice({
 });
 
 console.log(cartSlice);
+
 
 export const { clearCart, removeItems, increase, decrease } = cartSlice.actions;
 //clearCartという名前のaction creatorをexportしている。
