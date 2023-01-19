@@ -16,15 +16,20 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       //clearCartという名前のaction creatorを作っている。
       //state.cartItems = [];
-      return{cartItems: [], amount: 0, total: 0};
+      return { cartItems: [], amount: 0, total: 0 };
       //上記記述をすることによってState内でのcartItemsの値を空にすることができる。
+    },
+    removeItems: (state, action) => {
+      //console.log(action);
+      const itemId = action.payload;
+      state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
     },
   },
 });
 
 console.log(cartSlice);
 
-export const { clearCart } = cartSlice.actions;
+export const { clearCart, removeItems } = cartSlice.actions;
 //clearCartという名前のaction creatorをexportしている。
 //action creatorをexportすることで、他のファイルから呼び出して、Dispatchすることで、Reducerを実行することができる。
 export default cartSlice.reducer;
