@@ -1,22 +1,34 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeItems, increase } from "../features/shoppingCart/CartSlice";
+import {
+  removeItems,
+  increase,
+  decrease,
+} from "../features/shoppingCart/CartSlice";
 
 const CartItem = ({ id, img, title, price, amount }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   return (
     <article className="cart-item">
       <img src={img} alt="This is a picture of what you want to buy" />
       <div>
         <h4>{title}</h4>
         <h4 className="item-price">{price}yen</h4>
-        <button className="remove-btn" onClick={()=>dispatch(removeItems(id))}>remove</button>
-        
+        <button
+          className="remove-btn"
+          onClick={() => dispatch(removeItems(id))}
+        >
+          remove
+        </button>
       </div>
       <div>
-        <button className="amount-btn" onClick={() => dispatch(increase(id))}>+</button>
+        <button className="amount-btn" onClick={() => dispatch(increase(id))}>
+          +
+        </button>
         <p className="amount">{amount}</p>
-        <button className="amount-btn">-</button>
+        <button className="amount-btn" onClick={() => dispatch(decrease(id))}>
+          -
+        </button>
       </div>
     </article>
   );
