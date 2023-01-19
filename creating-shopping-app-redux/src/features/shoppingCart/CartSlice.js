@@ -24,12 +24,18 @@ const cartSlice = createSlice({
       const itemId = action.payload;
       state.cartItems = state.cartItems.filter((item) => item.id !== itemId);
     },
+    increase: (state, action) => {
+      const cartItem = state.cartItems.find(
+        (item) => item.id === action.payload
+      );
+      cartItem.amount = cartItem.amount + 1;
+    },
   },
 });
 
 console.log(cartSlice);
 
-export const { clearCart, removeItems } = cartSlice.actions;
+export const { clearCart, removeItems, increase } = cartSlice.actions;
 //clearCartという名前のaction creatorをexportしている。
 //action creatorをexportすることで、他のファイルから呼び出して、Dispatchすることで、Reducerを実行することができる。
 export default cartSlice.reducer;
