@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeItems } from "../features/shoppingCart/CartSlice";
+import { removeItems, increase } from "../features/shoppingCart/CartSlice";
 
 const CartItem = ({ id, img, title, price, amount }) => {
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const CartItem = ({ id, img, title, price, amount }) => {
         
       </div>
       <div>
-        <button className="amount-btn">+</button>
+        <button className="amount-btn" onClick={() => dispatch(increase(id))}>+</button>
         <p className="amount">{amount}</p>
         <button className="amount-btn">-</button>
       </div>
